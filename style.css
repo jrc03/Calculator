@@ -61,17 +61,26 @@ body {
 .operators {
     display: flex;
     flex-direction: column;
+    height: fit-content;
     border: 2px solid black;
     align-self: center;
-    justify-content: center;
+    
    height: 80%;
-    width: 30%;
-    flex: 1 0 auto;
+    width: fit-content;
+    /* flex: 1 0 auto; */
     gap: 10px;
 }
+.operator{
+    display: flex;
+    height: 60px;
+    width: 60px;
+    border: 2px solid black;
+    border-radius: 90px;
+    align-items: center;
+    justify-content: center;
+}
 
-
-.number, .operator {
+.number {
     display: flex;
     justify-content: center;
     border-radius: 90px;
