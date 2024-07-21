@@ -1,7 +1,3 @@
-//lets do the pseudo! so basically first ig i gotta save whats shown in display. but first i need to print the numbers yk, so i gotta get that working, but idk how ngl, well the user is not supossed to manipulate the display perse, so when someone clicks on "1 " for example i gotta print that
-
-//rn im getting some errors printing the numbers to the display, but it crossed my mind that i can use some arrays and "join" to capture the numbers the user inputs. ngl i think that could work imagine like [1,2,3,4] ig that join or another function can do that array this [1234] (IDEA)
-
 const display= document.querySelector(".display");
 const equals= document.querySelector(".equal");
 const keypad= document.querySelectorAll(".keypad");
@@ -56,8 +52,10 @@ numbers.forEach(number => {
 operators.forEach(op => {
     op.addEventListener("click", () => {
         if (num2) {
+           
             calculateResult();
         }
+      
         operator = op.textContent;
         console.log("Clicked operator:", operator);
         display.textContent = operator; 
@@ -72,21 +70,22 @@ function calculateResult() {
     // Perform the calculation based on the chosen operator
     switch (operator) {
         case "+":
-            result = number1 + number2;
+            Math.round(result = number1 + number2);
             break;
         case "-":
-            result = number1 - number2;
+            Math.round( result = number1 - number2);
             break;
         case "*":
-            result = number1 * number2;
+            Math.round(result = number1 * number2);
             break;
         case "/":
             if (number2 === 0) {
                 result = "nah bro";
                 break;
-            }  // En caso de división por cero, devolvemos un mensaje de error.
-            result = number1 / number2;
+            } 
+            Math.round( result = number1 / number2);
             break;
+           
         default:
             result = "Error";
             break;
@@ -102,10 +101,21 @@ function calculateResult() {
     operator = "";
     num2 = "";
 }
-//mira tu va pone que cuando se resuelva la operacion, el resultado se convierta en "num1" etnonces si el tiguere hace dique "1+2" 3 sera num1 y num2 se vacia pa que se pueda seguir bregando. eso e parecido a llo que hiciste en lo ejercicio de javascript o creo que lo del arrayCardio qsy.s
 
 
-
+backspace.addEventListener("click", del);
+function del() {
+    if (num2) {
+        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+        num2 = display.textContent;
+    } else if (operator) {
+        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+        operator = display.textContent;
+    } else if (num1) {
+        display.textContent = display.textContent.slice(0, display.textContent.length - 1);
+        num1 = display.textContent;
+    }
+}
 
 equals.addEventListener("click", calculateResult);
 dot.addEventListener("click", () => {
@@ -135,5 +145,3 @@ operator = "";
 
 
 
-//then i gotta set up the buttons and listen for clicks 
-// nah, i gotta do some variables to store the first "set" yk like if i write down [1,2,3,4] it stores that in some kind of variable and then we proced with the new variable. I think i can use an array for that. myb like a loop for that 
